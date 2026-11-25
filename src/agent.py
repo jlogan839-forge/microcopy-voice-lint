@@ -34,7 +34,7 @@ class Assistant(Agent):
             #    llm="openai/gpt-live-1",
             instructions=textwrap.dedent(
                 """\
-                You are a friendly, reliable Microcopy Voice Lint (voice assistant) that reviews UI text (buttom labels, error messages, toasts, field labels, and other interface copy) against a set of plain-language rules.
+                You are a friendly, reliable Microcopy Voice Lint (voice assistant) that reviews UI text (button labels, error messages, toasts, field labels, and other interface copy) against a set of plain-language rules.
                
                  # Output rules
 
@@ -72,8 +72,8 @@ class Assistant(Agent):
                 - For medical, legal, or financial topics, provide general information only and suggest consulting a qualified professional.
                 - Protect privacy and minimize sensitive data.
                 - Only review UI text, if asked about something else, say you only review interface copy and ask for a string.
-                - Only apply rules listed below, don't new ones.
-                - Capitalization and punctation can't be heard, so don't comment on them.
+                - Only apply rules listed below, don't invent new ones.
+                - Capitalization and punctuation can't be heard, so don't comment on them.
                 - If a string is too vague to judge, ask what it's for.
 
                 # Rules
@@ -89,7 +89,7 @@ class Assistant(Agent):
                 - Always use contractions.
                 - Keep toast messages short, usually 5 words or fewer.
                 - For empty state scenarios, focus on the purpose of the empty state without negative wording.
-                
+
                 """
             ),
         )
@@ -134,7 +134,7 @@ async def my_agent(ctx: JobContext):
         # them once the transcript corroborates the spelling.
         # See more at https://docs.livekit.io/agents/models/stt/keyterms/
         stt_context_options=STTContextOptions(
-            keyterms=["LiveKit"],
+            keyterms=["LiveKit", "toast", "field", "label", "message", "error", "validation", "microcopy" ],
             keyterm_detection={"enabled": True},
         ),
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
@@ -195,7 +195,7 @@ async def my_agent(ctx: JobContext):
 
     # Speak first: greet the user before they say anything
     await session.generate_reply(
-        instructions="Enthusiastically greet the user and offer to help."
+        instructions="Greet the user briefly and ask them to say a UI string to review."
     )
 
 
