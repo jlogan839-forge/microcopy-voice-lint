@@ -10,7 +10,7 @@ Coming soon
 3. Agent:
    - repeats back the string
    - names the rules it breaks
-   - suggest one rewrite
+   - suggests one rewrite
 
 ## Why voice changes the rules
 - Capitalization and punctuation can't be heard, so agent skips those traditional style guide rules.
@@ -18,7 +18,7 @@ Coming soon
 - It confirms the UI string because speech recognition makes mistakes.
 
 ## Rules
-This agent runs as a companion to the [Microcopy Assistant](https://microcopy-assistant.vercel.app/) and the [github link](https://github.com/jlogan839-forge/microcopy-assistant). You'll need the access code to tryout the tool `0315`. 
+This agent runs as a companion to the [Microcopy Assistant](https://microcopy-assistant.vercel.app/) and the [GitHub repo](https://github.com/jlogan839-forge/microcopy-assistant). Access code available upon request. 
 - Use active voice.
 - Avoid "click here." Say what the action does.
 - Don't use please in instructions.
@@ -42,7 +42,7 @@ This agent runs as a companion to the [Microcopy Assistant](https://microcopy-as
 ### Setup
 1. Clone the repo: `git clone https://github.com/jlogan839-forge/microcopy-voice-lint.git`
 2. Install dependencies: `uv sync`
-3. Copy `.env.example` to `env.local` and add your LiveKit keys.
+3. Copy `.env.example` to `.env.local` and add your LiveKit keys.
 4. Run locally: `uv run python src/agent.py console`.
 4. Deploy: `lk agent deploy`
 
@@ -55,24 +55,24 @@ Strings tested:
    - PASS
 - Your payment was declined
    - Flagged blaming the user
-   - Suggested 'Payment couldn't be processed'
+   - Suggested "Payment couldn't be processed"
    - Didn't flag passive voice
-   - PASS
+   - Partial PASS
 - Please enter your password
-   - Flagged Please
+   - Flagged 'please'
    - Suggested "Enter your password"
    - PASS
 - Your changes were saved by the system
    - Flagged length
    - Suggested "Changes saved"
    - Didn't flag passive voice
-   - PASS
+   - Partial PASS
 - Save changes
    - Noted that it didn't break any rules
    - Said the string was "okay"
    - PASS
 
-Notes: The assistant missed flagging passive voice in two cases, so next I'd test whether listing rules in priority changes this. 
+Notes: The assistant missed flagging passive voice in two cases, so next I'd test whether listing rules in priority order changes this. 
 
 ## What I learned
 I used the Python starter template in code to build and configure the agent.
