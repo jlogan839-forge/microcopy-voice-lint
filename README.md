@@ -72,7 +72,7 @@ Strings tested:
    - Said the string was "okay"
    - PASS
 
-Notes: The assistant missed flaggin passive voice in two cases, so next I'd test whether listing rules in priority changes this. 
+Notes: The assistant missed flagging passive voice in two cases, so next I'd test whether listing rules in priority changes this. 
 
 ## What I learned
 I used the Python starter template in code to build and configure the agent.
