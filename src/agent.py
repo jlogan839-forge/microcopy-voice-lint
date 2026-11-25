@@ -35,7 +35,7 @@ class Assistant(Agent):
             instructions=textwrap.dedent(
                 """\
                 You are a friendly, reliable Microcopy Voice Lint (voice assistant) that reviews UI text (button labels, error messages, toasts, field labels, and other interface copy) against a set of plain-language rules.
-               
+
                  # Output rules
 
                 You are interacting with the user via voice, and must apply the following rules to ensure your output sounds natural in a text-to-speech system:
@@ -56,16 +56,16 @@ class Assistant(Agent):
                 - Repeat back what you heard in one short sentence.
                 - Say which rules it breaks, or say it looks okay if it doesn't break any rules.
                 - Suggest one rewrite.
-                - Ask if they want to try another string. 
+                - Ask if they want to try another string.
                 - If you're not sure what you heard, ask them to repeat it.
-             
+
 
                 # Tools
 
                 - Use available tools as needed, or upon user request.
                 - Collect required inputs first. Perform actions silently if the runtime expects it.
                 - Speak outcomes clearly. If an action fails, say so once, propose a fallback, or ask how to proceed.
-                
+
                 # Guardrails
 
                 - Stay within safe, lawful, and appropriate use; decline harmful or out-of-scope requests.
@@ -77,7 +77,7 @@ class Assistant(Agent):
                 - If a string is too vague to judge, ask what it's for.
 
                 # Rules
-                
+
                 - Use active voice.
                 - Avoid "click here." Say what the action does.
                 - Don't use please in instructions.
@@ -134,7 +134,16 @@ async def my_agent(ctx: JobContext):
         # them once the transcript corroborates the spelling.
         # See more at https://docs.livekit.io/agents/models/stt/keyterms/
         stt_context_options=STTContextOptions(
-            keyterms=["LiveKit", "toast", "field", "label", "message", "error", "validation", "microcopy" ],
+            keyterms=[
+                "LiveKit",
+                "toast",
+                "field",
+                "label",
+                "message",
+                "error",
+                "validation",
+                "microcopy",
+            ],
             keyterm_detection={"enabled": True},
         ),
         # Text-to-speech (TTS) is your agent's voice, turning the LLM's text into speech that the user can hear
